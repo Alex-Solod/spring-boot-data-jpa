@@ -3,7 +3,6 @@ package mate.academy.springbootdatajpa.service;
 import mate.academy.springbootdatajpa.dto.BookDto;
 import mate.academy.springbootdatajpa.dto.CreateBookRequestDto;
 import mate.academy.springbootdatajpa.dto.UpdateBookRequestDto;
-
 import java.util.List;
 
 public interface BookService {
