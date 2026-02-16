@@ -9,10 +9,10 @@ import java.math.BigDecimal;
 
 @Data
 public class CreateBookRequestDto {
-    @NotBlank
+    @NotNull
     private String author;
 
-    @NotBlank
+    @NotNull
     private String title;
 
     @NotNull
@@ -23,6 +23,6 @@ public class CreateBookRequestDto {
 
     private String coverImage;
 
-    @NotBlank
+    @NotNull
     private String isbn;
 }

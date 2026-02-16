@@ -11,10 +11,10 @@ import java.math.BigDecimal;
 public class BookDto {
     private Long id;
 
-    @NotBlank
+    @NotNull
     private String author;
 
-    @NotBlank
+    @NotNull
     private String title;
 
     @NotNull
@@ -25,6 +25,6 @@ public class BookDto {
 
     private String coverImage;
 
-    @NotBlank
+    @NotNull
     private String isbn;
 }
