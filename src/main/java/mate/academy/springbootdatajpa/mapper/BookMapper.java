@@ -5,7 +5,6 @@ import mate.academy.springbootdatajpa.dto.CreateBookRequestDto;
 import mate.academy.springbootdatajpa.dto.UpdateBookRequestDto;
 import mate.academy.springbootdatajpa.model.Book;
 import org.mapstruct.Mapper;
-
 import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
@@ -14,5 +13,6 @@ public interface BookMapper {
 
     Book toModel(CreateBookRequestDto requestDto);
 
-    void updateBookFromDto(UpdateBookRequestDto dto, @MappingTarget Book book);
+    void updateBookFromDto(UpdateBookRequestDto dto,
+                           @MappingTarget Book book);
 }
