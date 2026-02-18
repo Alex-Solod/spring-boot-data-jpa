@@ -27,7 +27,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Page<BookDto> getAllBooks(Pageable pageable) {
-        return bookRepository.findAllByDeletedFalse(pageable).map(bookMapper::toDto);
+        return bookRepository.findAll(pageable).map(bookMapper::toDto);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookDto updateBook(Long id, UpdateBookRequestDto bookRequestDto) {
-        Book book = bookRepository.findByIdAndDeletedFalse(id)
+        Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Book with id " + id + " not found"));
         bookMapper.updateBookFromDto(bookRequestDto, book);
