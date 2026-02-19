@@ -8,8 +8,9 @@ import mate.academy.springbootdatajpa.exception.EntityNotFoundException;
 import mate.academy.springbootdatajpa.mapper.BookMapper;
 import mate.academy.springbootdatajpa.model.Book;
 import mate.academy.springbootdatajpa.repository.BookRepository;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-import java.util.List;
+import org.springframework.data.domain.Pageable;
 
 @Service
 @RequiredArgsConstructor
@@ -25,11 +26,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookDto> getAllBooks() {
-        return bookRepository.findAllByDeletedFalse()
-                .stream()
-                .map(bookMapper::toDto)
-                .toList();
+    public Page<BookDto> getAllBooks(Pageable pageable) {
+        return bookRepository.findAll(pageable).map(bookMapper::toDto);
     }
 
     @Override
@@ -42,7 +40,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookDto updateBook(Long id, UpdateBookRequestDto bookRequestDto) {
-        Book book = bookRepository.findByIdAndDeletedFalse(id)
+        Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Book with id " + id + " not found"));
         bookMapper.updateBookFromDto(bookRequestDto, book);
